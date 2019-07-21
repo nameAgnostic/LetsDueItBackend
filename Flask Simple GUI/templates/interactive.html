@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>Interactive!</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type=text/javascript>
+		$(function() {
+			$('a#process_input').bind('click', function() {
+				$.getJSON('/background_process', {
+					userInput: $('input[name="userInput"]').val(),
+					userInput2: $('input[name="userInput2"]').val(),
+				}, function(data) {
+			  		$("#result").text(data.result);
+				});
+				return false;
+		  	});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		Put stuff in the text box.
+
+		<br><br>
+		
+		<form>
+			<input type=text size=20 name=userInput>
+			<input type=text size=20 name=userInput2>
+			<a href='#' id=process_input><button>Submit</button></a>
+		</form>
+
+	</div>
+
+	<div id=result>Results will post here</div>
+</body>
+</html>
